@@ -18,14 +18,12 @@
 			}
 			.toolbuttons{
 				display: flex;
-				width: 50%;
  				flex-grow: 2;
 				flex-direction: row;
 				justify-content: flex-end;
 			}
 			.toolbuttons div{
-				width: 100px;
-				height: 100px;
+				height: 50px;
 			}
 			.row{
 				display:flex;
@@ -40,7 +38,15 @@
 				padding: 5px;
 				margin: 5px;
 			}
+			.selectormain{
+				display:flex;
+				flex-direction: row;
+			}
+			.selectortool{
+				display:flex;
+				flex-direction: column;
 
+			}
 
 			/*This part is entirely copied and pasted. Will change later. */
 			.switch{
@@ -107,7 +113,7 @@
 					<h1>Extras</h1>
 				</div>
 				<div class = "col">
-					<h1></h1><label class = "switch">
+					<h1><label class = "switch">
 						<input type = "checkbox">
 						<span class = "slider"></span>
 					</label>
@@ -119,39 +125,18 @@
             
         </div>
     </header>
-    
-    <img id="output" />
-
-	<div class = "row">
-		<div class = "col">
-			<p>1</p>
-		</div>
-		<div class = "col">
-			<p>2</p>
-		</div>
-		<div class = "col">
-			<p>3</p>
-		</div>
-	</div>
 	
-	<table>
-		<thead>
-			<tr>
-				<th>Source</th>
-				<th width="200">Hovered color</th>
-				<th width="200">Selected color</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>
-					<canvas id="canvas" width="800" height="780"></canvas>
-				</td>
-				<td align="center" class="color-cell" id="hovered-color"></td>
-				<td align="center" class="color-cell" id="selected-color"></td>
-			</tr>
-		</tbody>
-	<table>
+	<div class = "selectormain">
+		<!--This is where the image goes.-->
+			<img id="output" />
+			<canvas id="canvas" width="500" height="500"></canvas>
+		<!--This is where the vertical toolbar goes.-->
+		<div class = "selectortool">
+			<p id = "hovered-color"> </p>
+			<p id = "selected-color"> </p>
+		</div>
+		<!--To do: Add a proper header (not the temp one we have rn), Slider do something, fix the offset, more to come-->
+	</div>
 	
 	<script src="color-picker.js"></script>
   </body>
