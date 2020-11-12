@@ -9,14 +9,131 @@
 			.color-cell {
 				color: white;
 			}
+			.toolmenu{
+				display: flex;
+				white-space: nowrap;
+				flex-direction: row;
+				line-height: 40px;
+				width: 100%;
+			}
+			.toolbuttons{
+				display: flex;
+				width: 50%;
+ 				flex-grow: 2;
+				flex-direction: row;
+				justify-content: flex-end;
+			}
+			.toolbuttons div{
+				width: 100px;
+				height: 100px;
+			}
+			.row{
+				display:flex;
+				flex-direction: row;
+				justify-content: stretch;
+				position: relative;
+				flex: 1;
+			}
+			.col{
+				display:flex;
+				flex-direction: column;
+				padding: 5px;
+				margin: 5px;
+			}
+
+
+			/*This part is entirely copied and pasted. Will change later. */
+			.switch{
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 34px;
+			}
+			.slider{
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #ccc;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			input:checked + .slider {
+				background-color: #2196F3;
+			}
+
+			input:focus + .slider {
+				box-shadow: 0 0 1px #2196F3;
+			}
+
+			input:checked + .slider:before {
+				-webkit-transform: translateX(26px);
+				-ms-transform: translateX(26px);
+				transform: translateX(26px);
+			}
+
+			
 		</style>
   </head>
   <body>
-    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+	<!-- This is where our toolbar goes.-->
+	<header>
+        <div class = "toolmenu">
+            <h1>
+                True Sight
+			</h1>
+			<ul class = "toolbuttons">
+				<div class = "col">
+					<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+					<h1><label for="file" style="cursor: pointer;">Upload Image</label></h1>
+				</div>
+				<div class = "col">
+					<h1>About</h1>
+				</div>
+				<div class = "col">
+					<h1>Extras</h1>
+				</div>
+				<div class = "col">
+					<h1></h1><label class = "switch">
+						<input type = "checkbox">
+						<span class = "slider"></span>
+					</label>
+					</h1>
+				</div>
+				
+				
+			</ul>
+            
+        </div>
+    </header>
+    
     <img id="output" />
-    
-    
+
+	<div class = "row">
+		<div class = "col">
+			<p>1</p>
+		</div>
+		<div class = "col">
+			<p>2</p>
+		</div>
+		<div class = "col">
+			<p>3</p>
+		</div>
+	</div>
+	
 	<table>
 		<thead>
 			<tr>
@@ -35,6 +152,7 @@
 			</tr>
 		</tbody>
 	<table>
+	
 	<script src="color-picker.js"></script>
   </body>
 </html>
