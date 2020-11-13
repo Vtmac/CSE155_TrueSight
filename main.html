@@ -6,6 +6,11 @@
     <title>Color picker</title>
 
 		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				/*background-color: #f9f9fb;*/
+			}
 			.color-cell {
 				color: white;
 			}
@@ -15,8 +20,12 @@
 				flex-direction: row;
 				line-height: 40px;
 				width: 100%;
+				background-color: #f0f0f0;
+				border-top: solid 1px #9c9d9f;
+				border-bottom: solid 1px #cacacc;
 			}
 			.toolbuttons{
+				text-align: center;
 				display: flex;
  				flex-grow: 2;
 				flex-direction: row;
@@ -37,15 +46,32 @@
 				flex-direction: column;
 				padding: 5px;
 				margin: 5px;
+				padding-left: 18px;
+				padding-right: 18px;
+				
 			}
 			.selectormain{
 				display:flex;
 				flex-direction: row;
+				background-color: #f9f9fb;
+				height: 100%;
+				
+			}
+			.selectorbox{
+				display:flex;
+				flex-direction: row;
+				background-color: #f9f9fb;
+				justify-content: center;
+				flex: 15;
+				padding: 20px;
 			}
 			.selectortool{
 				display:flex;
 				flex-direction: column;
-
+				align-items: center;
+				flex: 1;
+				background-color: #737373;
+				
 			}
 
 			/*This part is entirely copied and pasted. Will change later. */
@@ -97,6 +123,7 @@
   <body>
 	<!-- This is where our toolbar goes.-->
 	<header>
+		
         <div class = "toolmenu">
             <h1>
                 True Sight
@@ -104,7 +131,7 @@
 			<ul class = "toolbuttons">
 				<div class = "col">
 					<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
-					<h1><label for="file" style="cursor: pointer;">Upload Image</label></h1>
+					<h1><label for="file" style="cursor: pointer;">Upload</label></h1>
 				</div>
 				<div class = "col">
 					<h1>About</h1>
@@ -125,19 +152,25 @@
             
         </div>
     </header>
-	
+	<script src="color-picker.js"></script>
 	<div class = "selectormain">
-		<!--This is where the image goes.-->
-			<img id="output" />
-			<canvas id="canvas" width="500" height="500"></canvas>
+		<div class = "selectorbox">
+				<!--This is where the image goes.-->
+				<img id="output" />
+				<canvas id="canvas" width="500" height="500"></canvas>	
+		</div>
+
 		<!--This is where the vertical toolbar goes.-->
 		<div class = "selectortool">
+			<h2>Toolbar</h2>
+			<p>Hovered Color</p>
 			<p id = "hovered-color"> </p>
+			<p>Selected Color</p>
 			<p id = "selected-color"> </p>
 		</div>
 		<!--To do: Add a proper header (not the temp one we have rn), Slider do something, fix the offset, more to come-->
 	</div>
+
 	
-	<script src="color-picker.js"></script>
   </body>
 </html>
