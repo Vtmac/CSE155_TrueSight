@@ -151,13 +151,15 @@
 			</ul>
             
         </div>
-    </header>
+	</header>
+	<img id="output" />
 	<script src="color-picker.js"></script>
 	<div class = "selectormain">
 		<div class = "selectorbox">
 				<!--This is where the image goes.-->
-				<img id="output" />
-				<canvas id="canvas" width="500" height="500"></canvas>	
+				
+				<!--<div id = "area"></div>	-->
+				<canvas id="canvas" width=500px height = 500px></canvas>
 		</div>
 
 		<!--This is where the vertical toolbar goes.-->
@@ -167,6 +169,11 @@
 			<p id = "hovered-color"> </p>
 			<p>Selected Color</p>
 			<p id = "selected-color"> </p>
+			<h2>Debug</h2>
+			<p id = "x">X</p>
+			<p id = "y">Y</p>
+			<p id = "wx">WX</p>
+			<p id = "wy">WY</p>
 		</div>
 		<!--To do: Add a proper header (not the temp one we have rn), Slider do something, fix the offset, more to come-->
 	</div>
