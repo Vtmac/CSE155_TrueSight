@@ -1,9 +1,22 @@
 
 var loadFile = function(event) {
   var img = document.getElementById('output');
+  var winW = window.innerHeight;
+  var winH = window.innerWidth;
   img.src = URL.createObjectURL(event.target.files[0]);
 
   var canvas = document.getElementById('canvas');
+  if(img.height > img.width){
+    canvas.height = winH;
+    canvas.width = (img.width/img.height) * winH;
+  }else if(img.width > img.height){
+    canvas.height = (img.height/img.width) * 1000;
+    canvas.width = 1000;
+  }else{
+    canvas.height = winH;
+    canvas.width = winH;
+  }
+  
   var ctx = canvas.getContext('2d');
 
   var htmlcode = "<canvas id=canvas" + "></canvas>";
