@@ -55,3 +55,8 @@ var loadFile = function(event) {
   });
 };
 
+function darkMode(){
+  var element = document.body;
+  element.classList.toggle("darkmode");
+}
+

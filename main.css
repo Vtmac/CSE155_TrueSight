@@ -6,3 +6,15 @@ th{
     font-size: 70px;
     border: 3px solid rgba(102, 239, 240, 1);
 }
+
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
