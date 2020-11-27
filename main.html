@@ -124,14 +124,15 @@
 	<!-- This is where our toolbar goes.-->
 	<header>
 		
-        <div class = "toolmenu">
+        <div class = "toolmenu" id="toobar">
             <h1>
                 True Sight
 			</h1>
 			<ul class = "toolbuttons">
 				<div class = "col">
-					<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+					
 					<h1><label for="file" style="cursor: pointer;">Upload</label></h1>
+					<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
 				</div>
 				<div class = "col">
 					<h1>About</h1>
@@ -141,7 +142,7 @@
 				</div>
 				<div class = "col">
 					<h1><label class = "switch">
-						<input type = "checkbox">
+						<input type = "checkbox" id="slider" onClick="darkMode()">
 						<span class = "slider"></span>
 					</label>
 					</h1>
@@ -165,16 +166,23 @@
 
 		<!--This is where the vertical toolbar goes.-->
 		<div class = "selectortool">
+			<div class ="row" flex=1></div>
 			<h2>Toolbar</h2>
+			<div class ="row" flex=5></div>
 			<p>Hovered Color</p>
 			<p id = "hovered-color"> </p>
+			<div class ="row" flex=5></div>
 			<p>Selected Color</p>
 			<p id = "selected-color"> </p>
+			<div class ="row" flex=5></div>
 			<h2>Debug</h2>
 			<p id = "x">X</p>
 			<p id = "y">Y</p>
 			<p id = "wx">WX</p>
 			<p id = "wy">WY</p>
+			<div class ="row"></div>
+			
+			
 		</div>
 		<!--To do: Add a proper header (not the temp one we have rn), Slider do something, fix the offset, more to come-->
 	</div>

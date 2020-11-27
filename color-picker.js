@@ -1,29 +1,33 @@
 
 var loadFile = function(event) {
   var img = document.getElementById('output');
-  var winW = window.innerHeight;
-  var winH = window.innerWidth;
   img.src = URL.createObjectURL(event.target.files[0]);
 
+  var stdH = 750;
   var canvas = document.getElementById('canvas');
-  if(img.height > img.width){
-    canvas.height = winH;
-    canvas.width = (img.width/img.height) * winH;
+  
+  
+  /*if(img.height > img.width){
+    canvas.height = stdH;
+    canvas.width = (img.width/img.height) * stdH;
   }else if(img.width > img.height){
-    canvas.height = (img.height/img.width) * 1000;
-    canvas.width = 1000;
+    canvas.height = (img.height/img.width) * stdW;
+    canvas.width = stdW;
   }else{
-    canvas.height = winH;
-    canvas.width = winH;
-  }
+    canvas.height = stdH;
+    canvas.width = stdH;
+  }*/
   
   var ctx = canvas.getContext('2d');
 
   var htmlcode = "<canvas id=canvas" + "></canvas>";
 
   img.onload = function() {
+    canvas.width = (img.width/img.height) * stdH;
+    canvas.height = stdH;
     ctx.drawImage(img, 0, 0, img.width, img.height, 0 , 0, canvas.width, canvas.height);
     img.style.display = 'none';
+    
   };
   var hoveredColor = document.getElementById('hovered-color');
   var selectedColor = document.getElementById('selected-color');
@@ -41,14 +45,20 @@ var loadFile = function(event) {
     they.textContent = y;
     thex.textContent = x;
 
-    var pixel = ctx.getImageData(x, y, .5, 1);
+    var pixel = ctx.getImageData(x, y, 1, 1);
     var data = pixel.data;
 
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
     var hex = "#" + ("000000" + rgbToHex(data[0], data[1], data[2])).slice(-6);
 	  destination.style.background = rgba;
-    //destination.textContent = rgba;
+    destination.textContent = rgba;
     destination.textContent = hex;
+
+    if(data[0] + data[1] + data[2] >= 256){
+      destination.style.color = "black"
+    }else{
+      destination.style.color = "white"
+    }
 
 	  return hex;
   }
@@ -66,5 +76,11 @@ var loadFile = function(event) {
   canvas.addEventListener('click', function(event) {
 	  pick(event, selectedColor);
   });
+
+  
 };
 
+function darkMode(){
+  var element = document.getElementById("toobar");
+  element.classList.toggle("dark-mode");
+}
