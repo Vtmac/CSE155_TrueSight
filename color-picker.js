@@ -40,8 +40,8 @@ var loadFile = function(event) {
   function pick(event, destination) {
     var x = event.layerX - canvasPos.left;
     var y = event.layerY - canvasPos.top;
-    whox.textContent = canvasPos.top;
-    whoy.textContent = canvasPos.left;
+    whox.textContent = canvasPos.left;
+    whoy.textContent = canvasPos.top;
     they.textContent = y;
     thex.textContent = x;
 
@@ -82,5 +82,28 @@ var loadFile = function(event) {
 
 function darkMode(){
   var element = document.getElementById("toobar");
-  element.classList.toggle("dark-mode");
+  element.classList.toggle("toolmenu-dark");
+  var sel = document.getElementById("selectormain");
+  sel.classList.toggle("selectormain-dark");
+  var seltoo = document.getElementById("selectortool");
+  seltoo.classList.toggle("selectortool-dark");
+  var selbox = document.getElementById("selectorbox");
+  selbox.classList.toggle("selectorbox-dark");
+  //var toobar = document.getElementById("toobar");
+  
+  
+  
+}
+
+function lightMode(){
+  var toobar = document.getElementById("toobar");
+  var sel = document.getElementById("selectormain");
+  var seltoo = document.getElementById("selectortool");
+  var selbox = document.getElementById("selectorbox");
+  //var toobar = document.getElementById("toobar");
+  toobar.classList.toggle("toolmenu");
+  sel.classList.toggle("selectormain");
+  seltoo.classList.toggle("selectortool");
+  selbox.classList.toggle("selectorbox");
+
 }

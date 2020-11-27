@@ -9,31 +9,13 @@
 			*{
 				margin: 0;
 				padding: 0;
+				font-family: tahoma;
 				/*background-color: #f9f9fb;*/
 			}
 			.color-cell {
 				color: white;
 			}
-			.toolmenu{
-				display: flex;
-				white-space: nowrap;
-				flex-direction: row;
-				line-height: 40px;
-				width: 100%;
-				background-color: #f0f0f0;
-				border-top: solid 1px #9c9d9f;
-				border-bottom: solid 1px #cacacc;
-			}
-			.toolbuttons{
-				text-align: center;
-				display: flex;
- 				flex-grow: 2;
-				flex-direction: row;
-				justify-content: flex-end;
-			}
-			.toolbuttons div{
-				height: 50px;
-			}
+			
 			.row{
 				display:flex;
 				flex-direction: row;
@@ -48,29 +30,6 @@
 				margin: 5px;
 				padding-left: 18px;
 				padding-right: 18px;
-				
-			}
-			.selectormain{
-				display:flex;
-				flex-direction: row;
-				background-color: #f9f9fb;
-				height: 100%;
-				
-			}
-			.selectorbox{
-				display:flex;
-				flex-direction: row;
-				background-color: #f9f9fb;
-				justify-content: center;
-				flex: 15;
-				padding: 20px;
-			}
-			.selectortool{
-				display:flex;
-				flex-direction: column;
-				align-items: center;
-				flex: 1;
-				background-color: #737373;
 				
 			}
 
@@ -88,7 +47,7 @@
 				left: 0;
 				right: 0;
 				bottom: 0;
-				background-color: #ccc;
+				background-color: #2196F3;
 				-webkit-transition: .4s;
 				transition: .4s;
 			}
@@ -104,7 +63,7 @@
 				transition: .4s;
 			}
 			input:checked + .slider {
-				background-color: #2196F3;
+				background-color: #ccc;
 			}
 
 			input:focus + .slider {
@@ -118,13 +77,15 @@
 			}
 
 			
+
+			
 		</style>
   </head>
-  <body>
+  <body onload="lightMode()">
 	<!-- This is where our toolbar goes.-->
 	<header>
 		
-        <div class = "toolmenu" id="toobar">
+        <div id="toobar">
             <h1>
                 True Sight
 			</h1>
@@ -155,9 +116,9 @@
 	</header>
 	<img id="output" />
 	<script src="color-picker.js"></script>
-	<div class = "selectormain">
+	<div id = "selectormain">
 		
-		<div class = "selectorbox">
+		<div id = "selectorbox">
 				<!--This is where the image goes.-->
 				
 				<!--<div id = "area"></div>	-->
@@ -165,7 +126,7 @@
 		</div>
 
 		<!--This is where the vertical toolbar goes.-->
-		<div class = "selectortool">
+		<div id = "selectortool">
 			<div class ="row" flex=1></div>
 			<h2>Toolbar</h2>
 			<div class ="row" flex=5></div>
@@ -184,7 +145,7 @@
 			
 			
 		</div>
-		<!--To do: Add a proper header (not the temp one we have rn), Slider do something, fix the offset, more to come-->
+		<!--To do: Add a proper header (not the temp one we have rn), fix the offset, more to come-->
 	</div>
 
 	
