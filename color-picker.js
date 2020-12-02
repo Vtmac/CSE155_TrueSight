@@ -69,7 +69,7 @@ var loadFile = function(event) {
     var data = pixel.data;
 
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
-    var rgb_color = data[0] + "," +  data[1] + "," + data[2];
+    var rgb_color = data[0] + "," + " " +  data[1] + "," +" "+ data[2];
     
     destination.style.background = rgba;
     destination.textContent = rgba;
@@ -145,10 +145,10 @@ function darkMode(){
   var selbox = document.getElementById("selectorbox");
   selbox.classList.toggle("selectorbox-dark");
   var ban = document.getElementById("bann")
-  ban.src="titlecol.png";
+  ban.src="titlecol-light.png";
   if(document.getElementById("slidx").checked == true){
     var ban = document.getElementById("bann")
-    ban.src="titlecol-light.png";
+    ban.src="titlecol.png";
   }
 }
 
@@ -190,6 +190,6 @@ function RGBToHSL(r,g,b) {
   s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
-  hsl = h + "%," + s + "%," + l + "%";
+  hsl = h + "%," +" "+  s + "%," +" "+ l + "%";
   return hsl;
 }
