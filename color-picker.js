@@ -11,8 +11,12 @@ var loadFile = function(event) {
   var htmlcode = "<canvas id=canvas" + "></canvas>";
 
   img.onload = function() {
-    canvas.width = (img.width/img.height) * stdH;
-    canvas.height = stdH;
+    //canvas.width = (img.width/img.height) * stdH;
+    //canvas.height = stdH;
+    img.width = (img.width/img.height) * stdH;
+    img.height = stdH;
+    canvas.width = img.width;
+    canvas.height = img.height;
     ctx.drawImage(img, 0, 0, img.width, img.height, 0 , 0, canvas.width, canvas.height);
     img.style.display = 'none';
     
@@ -69,29 +73,31 @@ var loadFile = function(event) {
 };
 
 function darkMode(){
-  var element = document.getElementById("toobar");
-  element.classList.toggle("toolmenu-dark");
+  var toobar = document.getElementById("toobar");
+  toobar.classList.toggle("toolmenu-dark");
   var sel = document.getElementById("selectormain");
   sel.classList.toggle("selectormain-dark");
   var seltoo = document.getElementById("selectortool");
   seltoo.classList.toggle("selectortool-dark");
   var selbox = document.getElementById("selectorbox");
   selbox.classList.toggle("selectorbox-dark");
-  //var toobar = document.getElementById("toobar");
-  
-  
-  
+  var ban = document.getElementById("bann")
+  ban.src="titlecol.png";
+  if(document.getElementById("slidx").checked == true){
+    var ban = document.getElementById("bann")
+    ban.src="titlecol-light.png";
+  }
 }
 
 function lightMode(){
   var toobar = document.getElementById("toobar");
-  var sel = document.getElementById("selectormain");
-  var seltoo = document.getElementById("selectortool");
-  var selbox = document.getElementById("selectorbox");
-  //var toobar = document.getElementById("toobar");
   toobar.classList.toggle("toolmenu");
+  var sel = document.getElementById("selectormain");
   sel.classList.toggle("selectormain");
+  var seltoo = document.getElementById("selectortool");
   seltoo.classList.toggle("selectortool");
+  var selbox = document.getElementById("selectorbox");
   selbox.classList.toggle("selectorbox");
-
+  var ban = document.getElementById("bann")
+  ban.src="titlecol-light.png";
 }
