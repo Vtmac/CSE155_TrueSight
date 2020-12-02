@@ -23,6 +23,8 @@ var loadFile = function(event) {
   };
   var hoveredColor = document.getElementById('hovered-color');
   var selectedColor = document.getElementById('selected-color');
+  var hsl = document.getElementById('hsl');
+  var rgb = document.getElementById('rgb');
   var thex = document.getElementById("x");
   var they = document.getElementById("y");
   var whox = document.getElementById("wx");
@@ -42,6 +44,7 @@ var loadFile = function(event) {
 
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
     var hex = "#" + ("000000" + rgbToHex(data[0], data[1], data[2])).slice(-6);
+    
 	  destination.style.background = rgba;
     destination.textContent = rgba;
     destination.textContent = hex;
@@ -61,15 +64,76 @@ var loadFile = function(event) {
     return ((r << 16) | (g << 8) | b).toString(16);
   }
 
+  function RGB(event, destination) {
+    var x = event.layerX - canvasPos.left;
+    var y = event.layerY - canvasPos.top;
+    whox.textContent = canvasPos.left;
+    whoy.textContent = canvasPos.top;
+    they.textContent = y;
+    thex.textContent = x;
+
+    var pixel = ctx.getImageData(x, y, 1, 1);
+    var data = pixel.data;
+
+    const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
+    var rgb_color = data[0] + "," +  data[1] + "," + data[2];
+
+    destination.style.background = rgba;
+    destination.textContent = rgba;
+    destination.textContent = rgb_color;
+
+    if(data[0] + data[1] + data[2] >= 256){
+      destination.style.color = "black"
+    }else{
+      destination.style.color = "white"
+    }
+    return rgb_color;
+  }
+
+  function HSL(event, destination) {
+    var x = event.layerX - canvasPos.left;
+    var y = event.layerY - canvasPos.top;
+    whox.textContent = canvasPos.left;
+    whoy.textContent = canvasPos.top;
+    they.textContent = y;
+    thex.textContent = x;
+
+    var pixel = ctx.getImageData(x, y, 1, 1);
+    var data = pixel.data;
+
+    const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
+    var hsl = RGBToHSL(data[0], data[1], data[2]);
+
+    destination.style.background = rgba;
+    destination.textContent = rgba;
+    destination.textContent = hsl;
+
+    if(data[0] + data[1] + data[2] >= 256){
+      destination.style.color = "black"
+    }else{
+      destination.style.color = "white"
+    }
+    return hsl;
+  }
+
   canvas.addEventListener('mousemove', function(event) {
 	  pick(event, hoveredColor);
   });
   
   canvas.addEventListener('click', function(event) {
-	  pick(event, selectedColor);
+    pick(event, selectedColor);
+    HSL(event, hsl);
+    RGB(event, rgb);
   });
 
-  
+  /* canvas.addEventListener('click', function(event){
+  HSL(event, hsl);
+  }); */
+
+  /* canvas.addEventListener('click', function(event){
+  RGB(event, rgb);
+  }); */
+
 };
 
 function darkMode(){
@@ -100,4 +164,33 @@ function lightMode(){
   selbox.classList.toggle("selectorbox");
   var ban = document.getElementById("bann")
   ban.src="titlecol-light.png";
+}
+
+function RGBToHSL(r,g,b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  let cmin = Math.min(r,g,b),
+      cmax = Math.max(r,g,b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0;
+  if (delta == 0)
+    h = 0;
+  else if (cmax == r)
+    h = ((g - b) / delta) % 6;
+  else if (cmax == g)
+    h = (b - r) / delta + 2;
+  else
+    h = (r - g) / delta + 4;
+  h = Math.round(h * 60);
+  if (h < 0)
+      h += 360;
+  l = (cmax + cmin) / 2;
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+  hsl = h + "%," + s + "%," + l + "%";
+  return hsl;
 }
