@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<link rel = "stylesheet" href = "main.css">
+    <title>Color picker</title>
+
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				font-family: tahoma;
+				/*background-color: #f9f9fb;*/
+			}
+			.color-cell {
+				color: white;
+			}
+			
+			.row{
+				display:flex;
+				flex-direction: row;
+				justify-content: stretch;
+				position: relative;
+				flex: 1;
+			}
+			.col{
+				display:flex;
+				flex-direction: column;
+				padding: 5px;
+				margin: 5px;
+				padding-left: 18px;
+				padding-right: 18px;
+				
+			}
+
+			/*This part is entirely copied and pasted. Will change later. */
+			.switch{
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 34px;
+			}
+			.slider{
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #2196F3;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			input:checked + .slider {
+				background-color: #ccc;
+			}
+
+			input:focus + .slider {
+				box-shadow: 0 0 1px #2196F3;
+			}
+
+			input:checked + .slider:before {
+				-webkit-transform: translateX(26px);
+				-ms-transform: translateX(26px);
+				transform: translateX(26px);
+			}
+
+			
+
+			
+		</style>
+  </head>
+  <body onload="lightMode()">
+	<!-- This is where our toolbar goes.-->
+	<header>
+		
+        <div id="toobar">
+			<img id = "bann" alt="True Sight" width = "400" height = "50" style ="text-align: center;padding:5px;padding-left:18;padding-right:18;margin:5px;">
+			<ul class = "toolbuttons">
+				<div class = "col">
+					<h1><label for="file" style="cursor: pointer;">Upload</label></h1>
+					<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+				</div>
+				<div class = "col">
+					<h1>About</h1>
+				</div>
+				<div class = "col">
+					<h1>Extras</h1>
+				</div>
+				<div class = "col">
+					<h1><label class = "switch">
+						<input type = "checkbox" id="slidx" onClick="darkMode()">
+						<span class = "slider"></span>
+					</label>
+					</h1>
+				</div>
+				
+				
+			</ul>
+            
+        </div>
+	</header>
+	
+	<script src="color-picker.js"></script>
+	<div height = 100%>
+<div id = "selectormain">
+		
+		<div id = "selectorbox">
+				<!--This is where the image goes.-->
+				<img id="output" />
+				<!--<div id = "area"></div>	-->
+				<canvas id="canvas" width=850px height = 850px></canvas>
+		</div>
+
+		<!--This is where the vertical toolbar goes.-->
+		<!--
+				NICK
+				THIS
+				IS
+				WHERE
+				THE
+				TOOLBAR
+				GOES
+				VVVVV
+		-->
+		<div id = "selectortool">
+			<h2>Toolbar</h2>
+			<p>Hovered Color</p>
+			<p id = "hovered-color"> </p>
+			<div class ="row" flex=5></div>
+			<p>Selected Color</p>
+			<p id = "selected-color"> </p>
+			<div class ="row" flex=5></div>
+			<h2>Debug</h2>
+			<p id = "x">X</p>
+			<p id = "y">Y</p>
+			<p id = "wx">WX</p>
+			<p id = "wy">WY</p>
+			<div class ="row"></div>
+		</div>
+		<!--To do: fix the offset, more to come-->
+		<!--We use tahoma for dyslexia-->
+	</div>
+	</div>
+	
+
+	
+  </body>
+</html>
