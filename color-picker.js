@@ -3,20 +3,8 @@ var loadFile = function(event) {
   var img = document.getElementById('output');
   img.src = URL.createObjectURL(event.target.files[0]);
 
-  var stdH = 750;
+  var stdH = 850;
   var canvas = document.getElementById('canvas');
-  
-  
-  /*if(img.height > img.width){
-    canvas.height = stdH;
-    canvas.width = (img.width/img.height) * stdH;
-  }else if(img.width > img.height){
-    canvas.height = (img.height/img.width) * stdW;
-    canvas.width = stdW;
-  }else{
-    canvas.height = stdH;
-    canvas.width = stdH;
-  }*/
   
   var ctx = canvas.getContext('2d');
 

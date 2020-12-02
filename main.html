@@ -91,7 +91,6 @@
 			</h1>
 			<ul class = "toolbuttons">
 				<div class = "col">
-					
 					<h1><label for="file" style="cursor: pointer;">Upload</label></h1>
 					<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
 				</div>
@@ -114,22 +113,21 @@
             
         </div>
 	</header>
-	<img id="output" />
+	
 	<script src="color-picker.js"></script>
-	<div id = "selectormain">
+	<div height = 100%>
+<div id = "selectormain">
 		
 		<div id = "selectorbox">
 				<!--This is where the image goes.-->
-				
+				<img id="output" />
 				<!--<div id = "area"></div>	-->
-				<canvas id="canvas" width=500px height = 500px></canvas>
+				<canvas id="canvas" width=850px height = 850px></canvas>
 		</div>
 
 		<!--This is where the vertical toolbar goes.-->
 		<div id = "selectortool">
-			<div class ="row" flex=1></div>
 			<h2>Toolbar</h2>
-			<div class ="row" flex=5></div>
 			<p>Hovered Color</p>
 			<p id = "hovered-color"> </p>
 			<div class ="row" flex=5></div>
@@ -142,12 +140,12 @@
 			<p id = "wx">WX</p>
 			<p id = "wy">WY</p>
 			<div class ="row"></div>
-			
-			
 		</div>
 		<!--To do: Add a proper header (not the temp one we have rn), fix the offset, more to come-->
 		<!--We use tahoma for dyslexia-->
 	</div>
+	</div>
+	
 
 	
   </body>
