@@ -145,10 +145,10 @@ function darkMode(){
   var selbox = document.getElementById("selectorbox");
   selbox.classList.toggle("selectorbox-dark");
   var ban = document.getElementById("bann")
-  ban.src="titlecol-light.png";
+  ban.src="titlecol.png";
   if(document.getElementById("slidx").checked == true){
     var ban = document.getElementById("bann")
-    ban.src="titlecol.png";
+    ban.src="titlecol-light.png";
   }
 }
 
