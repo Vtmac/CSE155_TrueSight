@@ -7,6 +7,7 @@ th{
     border: 3px solid rgba(102, 239, 240, 1);
 }
 
+<<<<<<< HEAD
 .toolmenu{
   display: flex;
   
@@ -96,3 +97,16 @@ body {
   flex: 1;
   background-color: #535353;
 }
+=======
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+>>>>>>> 0c04ada54e01f90a1ed430f1b78adf27dc65f4a2

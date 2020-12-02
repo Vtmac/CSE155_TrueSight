@@ -44,7 +44,7 @@ var loadFile = function(event) {
 
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
     var hex = "#" + ("000000" + rgbToHex(data[0], data[1], data[2])).slice(-6);
-    
+
 	  destination.style.background = rgba;
     destination.textContent = rgba;
     destination.textContent = hex;
@@ -137,60 +137,7 @@ var loadFile = function(event) {
 };
 
 function darkMode(){
-  var toobar = document.getElementById("toobar");
-  toobar.classList.toggle("toolmenu-dark");
-  var sel = document.getElementById("selectormain");
-  sel.classList.toggle("selectormain-dark");
-  var seltoo = document.getElementById("selectortool");
-  seltoo.classList.toggle("selectortool-dark");
-  var selbox = document.getElementById("selectorbox");
-  selbox.classList.toggle("selectorbox-dark");
-  var ban = document.getElementById("bann")
-  ban.src="titlecol.png";
-  if(document.getElementById("slidx").checked == true){
-    var ban = document.getElementById("bann")
-    ban.src="titlecol-light.png";
-  }
+  var element = document.body;
+  element.classList.toggle("dark-mode");
 }
 
-function lightMode(){
-  var toobar = document.getElementById("toobar");
-  toobar.classList.toggle("toolmenu");
-  var sel = document.getElementById("selectormain");
-  sel.classList.toggle("selectormain");
-  var seltoo = document.getElementById("selectortool");
-  seltoo.classList.toggle("selectortool");
-  var selbox = document.getElementById("selectorbox");
-  selbox.classList.toggle("selectorbox");
-  var ban = document.getElementById("bann")
-  ban.src="titlecol-light.png";
-}
-
-function RGBToHSL(r,g,b) {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-  let cmin = Math.min(r,g,b),
-      cmax = Math.max(r,g,b),
-      delta = cmax - cmin,
-      h = 0,
-      s = 0,
-      l = 0;
-  if (delta == 0)
-    h = 0;
-  else if (cmax == r)
-    h = ((g - b) / delta) % 6;
-  else if (cmax == g)
-    h = (b - r) / delta + 2;
-  else
-    h = (r - g) / delta + 4;
-  h = Math.round(h * 60);
-  if (h < 0)
-      h += 360;
-  l = (cmax + cmin) / 2;
-  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-  s = +(s * 100).toFixed(1);
-  l = +(l * 100).toFixed(1);
-  hsl = h + "%," + s + "%," + l + "%";
-  return hsl;
-}
