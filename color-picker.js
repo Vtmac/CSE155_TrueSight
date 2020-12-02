@@ -23,6 +23,8 @@ var loadFile = function(event) {
   };
   var hoveredColor = document.getElementById('hovered-color');
   var selectedColor = document.getElementById('selected-color');
+  var hsl = document.getElementById('hsl');
+  var rgb = document.getElementById('rgb');
   var thex = document.getElementById("x");
   var they = document.getElementById("y");
   var whox = document.getElementById("wx");
