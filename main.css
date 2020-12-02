@@ -9,7 +9,7 @@ th{
 
 .toolmenu{
   display: flex;
-  text-align: center;
+  
   white-space: nowrap;
   flex-direction: row;
   line-height: 40px;
@@ -20,6 +20,7 @@ th{
   color: black;
 }
 .toolbuttons{
+  text-align: center;
   display: flex;
   flex-grow: 2;
   flex-direction: row;
