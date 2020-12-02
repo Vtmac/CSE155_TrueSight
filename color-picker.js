@@ -57,6 +57,32 @@ var loadFile = function(event) {
 	  return hex;
   }
 
+  function RGB(event, destination) {
+    var x = event.layerX - canvasPos.left;
+    var y = event.layerY - canvasPos.top;
+    whox.textContent = canvasPos.left;
+    whoy.textContent = canvasPos.top;
+    they.textContent = y;
+    thex.textContent = x;
+
+    var pixel = ctx.getImageData(x, y, 1, 1);
+    var data = pixel.data;
+
+    const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
+    var rgb_color = data[0] + "," +  data[1] + "," + data[2];
+    
+    destination.style.background = rgba;
+    destination.textContent = rgba;
+    destination.textContent = rgb_color;
+
+    if(data[0] + data[1] + data[2] >= 256){
+      destination.style.color = "black"
+    }else{
+      destination.style.color = "white"
+    }
+    return rgb_color;
+  }
+
   function rgbToHex(r, g, b) {
     if (r > 255 || g > 255 || b > 255)
         throw "Invalid color component";
