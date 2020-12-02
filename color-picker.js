@@ -120,9 +120,18 @@ var loadFile = function(event) {
   });
   
   canvas.addEventListener('click', function(event) {
-	  pick(event, selectedColor);
+    pick(event, selectedColor);
+    HSL(event, hsl);
+    RGB(event, rgb);
   });
 
+  /* canvas.addEventListener('click', function(event){
+    HSL(event, hsl);
+  }); */
+
+  /* canvas.addEventListener('click', function(event){
+    RGB(event, rgb);
+  }); */
   
 };
 
