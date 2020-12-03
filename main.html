@@ -32,6 +32,33 @@
 				padding-right: 18px;
 				
 			}
+			.hexBox{
+				display:flex;
+				height: 82px;
+				width: 82px;
+				border: 3px solid  gray;
+			}
+			.redBox{
+				display:flex;
+				height: 40px;
+				width: 40px;
+				background-color: red;
+				border: 2px solid  gray;
+			}
+			.blueBox{
+				display:flex;
+				height: 40px;
+				width: 40px;
+				background-color: blue;
+				border: 2px solid  gray;
+			}
+			.greenBox{
+				display:flex;
+				height: 40px;
+				width: 40px;
+				background-color: green;
+				border: 2px solid  gray;
+			}
 
 			/*This part is entirely copied and pasted. Will change later. */
 			.switch{
@@ -113,7 +140,7 @@
 	</header>
 	
 	<script src="color-picker.js"></script>
-	<div height = 100%>
+	<div style="height = 100%;">
 <div id = "selectormain">
 		
 		<div id = "selectorbox">
@@ -128,24 +155,51 @@
 			&nbsp;
 			<p><b> Hovered Color</b></p>
 			<p><b>Hex Value</b> </p>
-			<p id = "hovered-color"> </p>
-			<div class ="row" flex=5></div>
+			<div class = "hexBox" id = "hc">
+				<p id = "hovered-color" padding: 40px></p>
+			</div>
+			<div class ="row" style="flex:5;"></div>
 			<p><b>Selected Color</b></p>
 			<p><b>Hex Value</b></p>
-			<p id = "selected-color"> </p>
-			<div class ="row" flex=5></div>
+			<div class = "hexBox" id = "sc">
+				<p id = "selected-color" padding: 40px></p>
+			</div>
+			<p id = "selected-color"></p>
+			<div class ="row" style="flex:5; "></div>
+
 			<p><b>RGB Value</b></p>
-			<p id = "rgb"></p>
-			<div class ="row" flex=5></div>
-			<p><b>HSL Color</b></p>
-			<p id = "hsl"></p>
-			<div class ="row" flex=5></div>
-			<h2>Debug</h2>
+			<div class ="row" style="flex:1;flex-direction:row;">
+				<div class="redBox">
+					<p id = "rgbr"></p>
+				</div>
+				<div class="greenBox">
+					<p id = "rgbg"></p>
+				</div>
+				<div class ="blueBox">
+					<p id = "rgbb"></p>
+				</div>
+			</div>
+
+			<div class ="row" style="flex:5;"></div>
+			<p><b>HSL Color (%)</b></p>
+			<div class ="row" style="flex:1;flex-direction:row;">
+				<div class="redBox">
+					<p id = "hslr"></p>
+				</div>
+				<div class="greenBox">
+					<p id = "hslg"></p>
+				</div>
+				<div class ="blueBox">
+					<p id = "hslb"></p>
+				</div>
+			</div>
+			<div class ="row" style="flex:10;"></div>
+			<!--<h2>Debug</h2>
 			<p id = "x">X</p>
 			<p id = "y">Y</p>
 			<p id = "wx">WX</p>
-			<p id = "wy">WY</p>
-			<div class ="row"></div>
+			<p id = "wy">WY</p>-->
+			<div class ="row" style = "flex : 30;"></div>
 		</div>
 		<!--To do: fix the offset, more to come-->
 		<!--We use tahoma for dyslexia-->

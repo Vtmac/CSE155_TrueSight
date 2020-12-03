@@ -23,27 +23,32 @@ var loadFile = function(event) {
   };
   var hoveredColor = document.getElementById('hovered-color');
   var selectedColor = document.getElementById('selected-color');
-  var hsl = document.getElementById('hsl');
-  var rgb = document.getElementById('rgb');
-  var thex = document.getElementById("x");
-  var they = document.getElementById("y");
-  var whox = document.getElementById("wx");
-  var whoy = document.getElementById("wy");
+  //var hsl = document.getElementById('hsl');
+  //var rgb = document.getElementById('rgb');
+  //var thex = document.getElementById("x");
+  //var they = document.getElementById("y");
+  //var whox = document.getElementById("wx");
+  //var whoy = document.getElementById("wy");
   var canvasPos = canvas.getBoundingClientRect();
+
+  var hc = document.getElementById("hc");
+  var sc = document.getElementById("sc");
 
   function pick(event, destination) {
     var x = event.layerX - canvasPos.left;
     var y = event.layerY - canvasPos.top;
-    whox.textContent = canvasPos.left;
-    whoy.textContent = canvasPos.top;
-    they.textContent = y;
-    thex.textContent = x;
+    //whox.textContent = canvasPos.left;
+    //whoy.textContent = canvasPos.top;
+    //they.textContent = y;
+    //thex.textContent = x;
 
     var pixel = ctx.getImageData(x, y, 1, 1);
     var data = pixel.data;
 
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
     var hex = "#" + ("000000" + rgbToHex(data[0], data[1], data[2])).slice(-6);
+
+    hc.style.background = rgba;
 	  destination.style.background = rgba;
     destination.textContent = rgba;
     destination.textContent = hex;
@@ -60,10 +65,6 @@ var loadFile = function(event) {
   function RGB(event, destination) {
     var x = event.layerX - canvasPos.left;
     var y = event.layerY - canvasPos.top;
-    whox.textContent = canvasPos.left;
-    whoy.textContent = canvasPos.top;
-    they.textContent = y;
-    thex.textContent = x;
 
     var pixel = ctx.getImageData(x, y, 1, 1);
     var data = pixel.data;
@@ -71,41 +72,29 @@ var loadFile = function(event) {
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
     var rgb_color = data[0] + "," + " " +  data[1] + "," +" "+ data[2];
     
-    destination.style.background = rgba;
-    destination.textContent = rgba;
-    destination.textContent = rgb_color;
+    document.getElementById("rgbr").textContent = "" + data[0];
+    document.getElementById("rgbg").textContent = "" + data[1];
+    document.getElementById("rgbb").textContent = "" + data[2];
 
-    if(data[0] + data[1] + data[2] >= 256){
-      destination.style.color = "black"
-    }else{
-      destination.style.color = "white"
-    }
     return rgb_color;
   }
 
-  function HSL(event, destination) {
+  function HSL(event) {
     var x = event.layerX - canvasPos.left;
     var y = event.layerY - canvasPos.top;
-    whox.textContent = canvasPos.left;
-    whoy.textContent = canvasPos.top;
-    they.textContent = y;
-    thex.textContent = x;
 
     var pixel = ctx.getImageData(x, y, 1, 1);
     var data = pixel.data;
 
     const rgba = `rgba(${data[0]}, ${data[1]}, ${data[2]})`;
     var hsl = RGBToHSL(data[0], data[1], data[2]);
+    var hslS = hsl.split(',');
+    console.log(hsl);
 
-    destination.style.background = rgba;
-    destination.textContent = rgba;
-    destination.textContent = hsl;
+    document.getElementById("hslr").textContent = hslS[0].replaceAll("%","");
+    document.getElementById("hslg").textContent = hslS[1].replaceAll("%","");
+    document.getElementById("hslb").textContent = hslS[2].replaceAll("%","");
 
-    if(data[0] + data[1] + data[2] >= 256){
-      destination.style.color = "black"
-    }else{
-      destination.style.color = "white"
-    }
     return hsl;
   }
 
@@ -120,9 +109,9 @@ var loadFile = function(event) {
   });
   
   canvas.addEventListener('click', function(event) {
-    pick(event, selectedColor);
-    HSL(event, hsl);
-    RGB(event, rgb);
+    pick(event, sc);
+    HSL(event);
+    RGB(event, sc);
   });
 
   /* canvas.addEventListener('click', function(event){
